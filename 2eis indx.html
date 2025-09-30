@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eis Auswahl</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script>
+    function berechnePreis() {
+      // Preise mit var
+      var vPremiumPreis = 2.50;
+      var vExclusivePreis = 3.50;
+
+      // Auswahl aus dem Formular mit var
+      var vEisSorte = document.getElementById("eisSorte").value;
+      
+      var vKugeln = parseInt(document.getElementById("anzahlKugeln").value);
+      var vGesamtpreis = 0;
+
+      // if/else zur Auswahl der Sorte
+      if (vEisSorte == "Premiumeis") {
+        vGesamtpreis = vKugeln * vPremiumPreis;
+      } else {
+        vGesamtpreis = vKugeln * vExclusivePreis;
+      }
+
+      // Ausgabe
+      document.getElementById("gesamtPreis").textContent = "Gesamtpreis: " + vGesamtpreis.toFixed(2) + " €";
+    }
+  </script>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Eis Auswahl</h1>
+    <form>
+      <div class="mb-3">
+        <label for="eisSorte" class="form-label">Wählen Sie Ihre Eissorte:</label>
+        <select id="eisSorte" class="form-select">
+          <option value="Premiumeis">Premiumeis - 2.50 € pro Kugel</option>
+          <option value="Exclusiveis">Exclusiveis - 3.50 € pro Kugel</option>
+        </select>
+      </div>
+      
+      <div class="mb-3">
+        <label for="anzahlKugeln" class="form-label">Anzahl der Kugeln:</label>
+        <input type="number" class="form-control" id="anzahlKugeln" value="1" min="1">
+      </div>
+      
+      <!-- Button zum Berechnen des Preises -->
+      <button type="button" class="btn btn-primary" onclick="berechnePreis()">Berechnen</button>
+      
+      <!-- Anzeige des Gesamtpreises -->
+      <h3 id="gesamtPreis" class="text-center mt-3">Gesamtpreis: 2.50 €</h3>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS und Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
